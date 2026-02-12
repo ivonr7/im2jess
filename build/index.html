@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="./favicon.ico" />
+    <!-- Preload is necessary because we show these images when we disconnect from the server,
+    but at that point we cannot load these images from the server -->
+    <link rel="preload" href="./assets/gradient-yHQUC_QB.png" as="image" />
+    <link rel="preload" href="./assets/noise-60BoTA8O.png" as="image" />
+    <!-- Preload the fonts -->
+    <link rel="preload" href="./assets/Lora-VariableFont_wght-B2ootaw-.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Regular-CxL0S8W7.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/PTSans-Bold-D9fedIX3.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Regular-BTCkDNvf.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Medium-DU3aDxX5.ttf" as="font" crossorigin="anonymous" />
+    <link rel="preload" href="./assets/FiraMono-Bold-CLVRCuM9.ttf" as="font" crossorigin="anonymous" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="a marimo app" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <script data-marimo="true">
+      function __resizeIframe(obj) {
+        const scrollbarHeight = 20; // Max between windows, mac, and linux
+
+        function setHeight() {
+          // Guard against race condition where iframe isn't ready
+          if (!obj.contentWindow?.document?.documentElement) {
+            return;
+          }
+          const element = obj.contentWindow.document.documentElement;
+          // If there is no vertical scrollbar, we don't need to resize the iframe
+          if (element.scrollHeight === element.clientHeight) {
+            return;
+          }
+
+          // Create a new height that includes the scrollbar height if it's visible
+          const hasHorizontalScrollbar = element.scrollWidth > element.clientWidth;
+          const newHeight = element.scrollHeight + (hasHorizontalScrollbar ? scrollbarHeight : 0);
+
+          // Only update the height if it's different from the current height
+          if (obj.style.height !== `${newHeight}px`) {
+            obj.style.height = `${newHeight}px`;
+          }
+        }
+
+        // Resize the iframe to the height of the content and bottom scrollbar height
+        setHeight();
+
+        // Resize the iframe when the content changes
+        const resizeObserver = new ResizeObserver((_entries) => {
+          setHeight();
+        });
+        // Only observe if iframe content is ready
+        if (obj.contentWindow?.document?.body) {
+          resizeObserver.observe(obj.contentWindow.document.body);
+        }
+      }
+    </script>
+    <marimo-filename hidden>notebook.py</marimo-filename>
+    <!-- TODO(Trevor): Legacy, required by VS Code plugin. Remove when plugin is updated (see marimo/server/_templates/template.py) -->
+    <marimo-version data-version="{{ version }}" hidden></marimo-version>
+    <marimo-user-config data-config="{{ user_config }}" hidden></marimo-user-config>
+    <marimo-server-token data-token="{{ server_token }}" hidden></marimo-server-token>
+    <!-- /TODO -->
+    <title>example</title>
+    <script type="module" crossorigin src="./assets/index-CD6Gw4UH.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/preload-helper-D2MJg03u.js">
+    <link rel="modulepreload" crossorigin href="./assets/clsx-D8GwTfvk.js">
+    <link rel="modulepreload" crossorigin href="./assets/cn-BKtXLv3a.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-LvLJmgfZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-Bj1aDYRI.js">
+    <link rel="modulepreload" crossorigin href="./assets/compiler-runtime-B3qBwwSJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/jsx-runtime-ZmTK25f3.js">
+    <link rel="modulepreload" crossorigin href="./assets/badge-DX6CQ6PA.js">
+    <link rel="modulepreload" crossorigin href="./assets/hotkeys-BHHWjLlp.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEventListener-Cb-RVVEn.js">
+    <link rel="modulepreload" crossorigin href="./assets/button-CZ3Cs4qb.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-dom-CSu739Rf.js">
+    <link rel="modulepreload" crossorigin href="./assets/Combination-BAEdC-rz.js">
+    <link rel="modulepreload" crossorigin href="./assets/menu-items-BMjcEb2j.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DwV58Fb1.js">
+    <link rel="modulepreload" crossorigin href="./assets/createLucideIcon-BCdY6lG5.js">
+    <link rel="modulepreload" crossorigin href="./assets/check-Dr3SxUsb.js">
+    <link rel="modulepreload" crossorigin href="./assets/x-ZP5cObgf.js">
+    <link rel="modulepreload" crossorigin href="./assets/select-BVdzZKAh.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-CMQz28hC.js">
+    <link rel="modulepreload" crossorigin href="./assets/use-toast-BDYuj3zG.js">
+    <link rel="modulepreload" crossorigin href="./assets/_Uint8Array-BGESiCQL.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseIsEqual-B9N9Mw_N.js">
+    <link rel="modulepreload" crossorigin href="./assets/useEvent-BhXAndur.js">
+    <link rel="modulepreload" crossorigin href="./assets/invariant-CAG_dYON.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFor-Duhs3RiJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/merge-BBX6ug-N.js">
+    <link rel="modulepreload" crossorigin href="./assets/zod-H_cgTO0M.js">
+    <link rel="modulepreload" crossorigin href="./assets/utils-YqBXNpsM.js">
+    <link rel="modulepreload" crossorigin href="./assets/Deferred-DxQeE5uh.js">
+    <link rel="modulepreload" crossorigin href="./assets/uuid-DXdzqzcr.js">
+    <link rel="modulepreload" crossorigin href="./assets/DeferredRequestRegistry-CMf25YiV.js">
+    <link rel="modulepreload" crossorigin href="./assets/constants-B6Cb__3x.js">
+    <link rel="modulepreload" crossorigin href="./assets/session-BOFn9QrD.js">
+    <link rel="modulepreload" crossorigin href="./assets/config-Q0O7_stz.js">
+    <link rel="modulepreload" crossorigin href="./assets/requests-B4FYHTZl.js">
+    <link rel="modulepreload" crossorigin href="./assets/isSymbol-BGkTcW3U.js">
+    <link rel="modulepreload" crossorigin href="./assets/toString-DlRqgfqz.js">
+    <link rel="modulepreload" crossorigin href="./assets/_hasUnicode-CWqKLxBC.js">
+    <link rel="modulepreload" crossorigin href="./assets/assertNever-CBU83Y6o.js">
+    <link rel="modulepreload" crossorigin href="./assets/_arrayReduce-TT0iOGKY.js">
+    <link rel="modulepreload" crossorigin href="./assets/useLifecycle-ClI_npeg.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNonce-CS26E0hA.js">
+    <link rel="modulepreload" crossorigin href="./assets/useTheme-DQozhcp1.js">
+    <link rel="modulepreload" crossorigin href="./assets/once-Bul8mtFs.js">
+    <link rel="modulepreload" crossorigin href="./assets/capabilities-MM7JYRxj.js">
+    <link rel="modulepreload" crossorigin href="./assets/createReducer-B3rBsy4P.js">
+    <link rel="modulepreload" crossorigin href="./assets/paths-BzSgteR-.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-DBwNzi3C.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-ChS0Dc_R.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CtsanegT.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Dcqqg9UU.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-sMh6mJ2d.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Btv5Rh1v.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-bBwmhqty.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CoCQUAeM.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-Gqv0jSNr.js">
+    <link rel="modulepreload" crossorigin href="./assets/stex-jWatZkll.js">
+    <link rel="modulepreload" crossorigin href="./assets/toDate-DETS9bBd.js">
+    <link rel="modulepreload" crossorigin href="./assets/cjs-CH5Rj0g8.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseProperty-NKyJO2oh.js">
+    <link rel="modulepreload" crossorigin href="./assets/now-6sUe0ZdD.js">
+    <link rel="modulepreload" crossorigin href="./assets/debounce-B3mjKxHe.js">
+    <link rel="modulepreload" crossorigin href="./assets/toInteger-CDcO32Gx.js">
+    <link rel="modulepreload" crossorigin href="./assets/database-zap-k4ePIFAU.js">
+    <link rel="modulepreload" crossorigin href="./assets/main-U5Goe76G.js">
+    <link rel="modulepreload" crossorigin href="./assets/cells-DPp5cDaO.js">
+    <link rel="modulepreload" crossorigin href="./assets/spinner-DA8-7wQv.js">
+    <link rel="modulepreload" crossorigin href="./assets/chevron-right--18M_6o9.js">
+    <link rel="modulepreload" crossorigin href="./assets/dropdown-menu-ldcmQvIV.js">
+    <link rel="modulepreload" crossorigin href="./assets/kbd-Cm6Ba9qg.js">
+    <link rel="modulepreload" crossorigin href="./assets/renderShortcut-BckyRbYt.js">
+    <link rel="modulepreload" crossorigin href="./assets/multi-map-DxdLNTBd.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-BOoN6gJ1.js">
+    <link rel="modulepreload" crossorigin href="./assets/card-OlSjYhmd.js">
+    <link rel="modulepreload" crossorigin href="./assets/alert-dialog-BW4srmS0.js">
+    <link rel="modulepreload" crossorigin href="./assets/dialog-eb-NieZw.js">
+    <link rel="modulepreload" crossorigin href="./assets/dist-CDXJRSCj.js">
+    <link rel="modulepreload" crossorigin href="./assets/label-E64zk6_7.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDebounce-7iEVSqwM.js">
+    <link rel="modulepreload" crossorigin href="./assets/textarea-CRI7xDBj.js">
+    <link rel="modulepreload" crossorigin href="./assets/numbers-D7O23mOZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/SSRProvider-BIDQNg9Q.js">
+    <link rel="modulepreload" crossorigin href="./assets/context-BfYAMNLF.js">
+    <link rel="modulepreload" crossorigin href="./assets/useNumberFormatter-Db6Vjve5.js">
+    <link rel="modulepreload" crossorigin href="./assets/usePress-C__vuri5.js">
+    <link rel="modulepreload" crossorigin href="./assets/input-DUrq2DiR.js">
+    <link rel="modulepreload" crossorigin href="./assets/links-7AQBmdyV.js">
+    <link rel="modulepreload" crossorigin href="./assets/popover-CH1FzjxU.js">
+    <link rel="modulepreload" crossorigin href="./assets/switch-dWLWbbtg.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-DScsXgJW.js">
+    <link rel="modulepreload" crossorigin href="./assets/mode-Bn7pdJvO.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAsyncData-BMGLSTg8.js">
+    <link rel="modulepreload" crossorigin href="./assets/errors-TZBmrJmc.js">
+    <link rel="modulepreload" crossorigin href="./assets/error-banner-B9ts0mNl.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-DHrHayPa.js">
+    <link rel="modulepreload" crossorigin href="./assets/memoize-BCOZVFBt.js">
+    <link rel="modulepreload" crossorigin href="./assets/get-6uJrSKbw.js">
+    <link rel="modulepreload" crossorigin href="./assets/capitalize-CmNnkG9y.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-D-8y6iMN.js">
+    <link rel="modulepreload" crossorigin href="./assets/plus-B7DF33lD.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-cw-Dx8TEWFP.js">
+    <link rel="modulepreload" crossorigin href="./assets/trash-2-DDsWrxuJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/triangle-alert-CebQ7XwA.js">
+    <link rel="modulepreload" crossorigin href="./assets/ai-model-dropdown-Dk2SdB3C.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-JieDVWC_.js">
+    <link rel="modulepreload" crossorigin href="./assets/precisionRound-CU2C3Vxx.js">
+    <link rel="modulepreload" crossorigin href="./assets/defaultLocale-BLne0bXb.js">
+    <link rel="modulepreload" crossorigin href="./assets/vega-loader.browser-DXARUlxo.js">
+    <link rel="modulepreload" crossorigin href="./assets/tooltip-DxKBXCGp.js">
+    <link rel="modulepreload" crossorigin href="./assets/ErrorBoundary-B9Ifj8Jf.js">
+    <link rel="modulepreload" crossorigin href="./assets/useInstallPackage-D4fX0Ee_.js">
+    <link rel="modulepreload" crossorigin href="./assets/ImperativeModal-BNN1HA7x.js">
+    <link rel="modulepreload" crossorigin href="./assets/cell-link-B9b7J8QK.js">
+    <link rel="modulepreload" crossorigin href="./assets/datasource-CtyqtITR.js">
+    <link rel="modulepreload" crossorigin href="./assets/state-D4T75eZb.js">
+    <link rel="modulepreload" crossorigin href="./assets/MarimoErrorOutput-Lf9P8Fhl.js">
+    <link rel="modulepreload" crossorigin href="./assets/copy-icon-v8ME_JKB.js">
+    <link rel="modulepreload" crossorigin href="./assets/html-to-image-CIQqSu-S.js">
+    <link rel="modulepreload" crossorigin href="./assets/focus-C1YokgL7.js">
+    <link rel="modulepreload" crossorigin href="./assets/LazyAnyLanguageCodeMirror-DgZ8iknE.js">
+    <link rel="modulepreload" crossorigin href="./assets/chunk-5FQGJX7Z-DPlx2kjA.js">
+    <link rel="modulepreload" crossorigin href="./assets/katex-CDLTCvjQ.js">
+    <link rel="modulepreload" crossorigin href="./assets/markdown-renderer-DJy8ww5d.js">
+    <link rel="modulepreload" crossorigin href="./assets/command-2ElA5IkO.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-os8QlW6l.js">
+    <link rel="modulepreload" crossorigin href="./assets/useRunCells-D2HBb4DB.js">
+    <link rel="modulepreload" crossorigin href="./assets/purify.es-DZrAQFIu.js">
+    <link rel="modulepreload" crossorigin href="./assets/RenderHTML-D-of_-s7.js">
+    <link rel="modulepreload" crossorigin href="./assets/useIframeCapabilities-B_pQb20b.js">
+    <link rel="modulepreload" crossorigin href="./assets/formats-CobRswjh.js">
+    <link rel="modulepreload" crossorigin href="./assets/en-US-CCVfmA-q.js">
+    <link rel="modulepreload" crossorigin href="./assets/isValid-DDt9wNjK.js">
+    <link rel="modulepreload" crossorigin href="./assets/dates-CrvjILe3.js">
+    <link rel="modulepreload" crossorigin href="./assets/maps-D2_Mq1pZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/extends-BiFDv3jB.js">
+    <link rel="modulepreload" crossorigin href="./assets/emotion-is-prop-valid.esm-C59xfSYt.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDateFormatter-CqhdUl2n.js">
+    <link rel="modulepreload" crossorigin href="./assets/range-D2UKkEg-.js">
+    <link rel="modulepreload" crossorigin href="./assets/table-CfDbAm78.js">
+    <link rel="modulepreload" crossorigin href="./assets/JsonOutput-PE5ko4gi.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeleteCell-DdRX94yC.js">
+    <link rel="modulepreload" crossorigin href="./assets/icons-CCHmxi8d.js">
+    <link rel="modulepreload" crossorigin href="./assets/process-output-ByfLnk6j.js">
+    <link rel="modulepreload" crossorigin href="./assets/blob-D-eV0cU3.js">
+    <link rel="modulepreload" crossorigin href="./assets/objectWithoutPropertiesLoose-DfWeGRFv.js">
+    <link rel="modulepreload" crossorigin href="./assets/esm-Bmu2DhPy.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-Ch78NKWp.js">
+    <link rel="modulepreload" crossorigin href="./assets/play-GLWQQs7F.js">
+    <link rel="modulepreload" crossorigin href="./assets/add-cell-with-ai-e_HMl7UU.js">
+    <link rel="modulepreload" crossorigin href="./assets/isEmpty-CgX_-6Mt.js">
+    <link rel="modulepreload" crossorigin href="./assets/bot-message-square-B2ThzDUZ.js">
+    <link rel="modulepreload" crossorigin href="./assets/chat-display--jAB7huF.js">
+    <link rel="modulepreload" crossorigin href="./assets/chart-no-axes-column-qvVRjhv1.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-function-B6mgCeFJ.js">
+    <link rel="modulepreload" crossorigin href="./assets/spec-Ch0xnJY4.js">
+    <link rel="modulepreload" crossorigin href="./assets/column-preview-CXjSXUhP.js">
+    <link rel="modulepreload" crossorigin href="./assets/toggle-zVW4FXNz.js">
+    <link rel="modulepreload" crossorigin href="./assets/globals-BgACvYmr.js">
+    <link rel="modulepreload" crossorigin href="./assets/share-ipf2hrOh.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseSet-5Rdwpmr3.js">
+    <link rel="modulepreload" crossorigin href="./assets/react-resizable-panels.browser.esm-Da3ksQXL.js">
+    <link rel="modulepreload" crossorigin href="./assets/utilities.esm-dm9SQStE.js">
+    <link rel="modulepreload" crossorigin href="./assets/floating-outline-BtdqbkUq.js">
+    <link rel="modulepreload" crossorigin href="./assets/useAddCell-CmuX2hOk.js">
+    <link rel="modulepreload" crossorigin href="./assets/eye-off-AK_9uodG.js">
+    <link rel="modulepreload" crossorigin href="./assets/readonly-python-code-WjTf6Pdd.js">
+    <link rel="modulepreload" crossorigin href="./assets/file-video-camera-C3wGzBnE.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-BRfQN3HL.js">
+    <link rel="modulepreload" crossorigin href="./assets/refresh-ccw-DN_xCV6A.js">
+    <link rel="modulepreload" crossorigin href="./assets/form-BidPUZUn.js">
+    <link rel="modulepreload" crossorigin href="./assets/field-CySaBlkz.js">
+    <link rel="modulepreload" crossorigin href="./assets/useBoolean-Ck_unDZw.js">
+    <link rel="modulepreload" crossorigin href="./assets/useDeepCompareMemoize-5OUgerQ3.js">
+    <link rel="modulepreload" crossorigin href="./assets/types-C1UhS3qM.js">
+    <link rel="modulepreload" crossorigin href="./assets/prop-types-DaaA-ptl.js">
+    <link rel="modulepreload" crossorigin href="./assets/es-BYgU_srD.js">
+    <link rel="modulepreload" crossorigin href="./assets/hasIn-CycJImp8.js">
+    <link rel="modulepreload" crossorigin href="./assets/_baseFlatten-CUZNxU8H.js">
+    <link rel="modulepreload" crossorigin href="./assets/flatten-D-7VEN0q.js">
+    <link rel="modulepreload" crossorigin href="./assets/pick-B_6Qi5aM.js">
+    <link rel="modulepreload" crossorigin href="./assets/code-xml-CgN_Yig7.js">
+    <link rel="modulepreload" crossorigin href="./assets/download-Dg7clfkc.js">
+    <link rel="modulepreload" crossorigin href="./assets/square-CuJ72M8f.js">
+    <link rel="modulepreload" crossorigin href="./assets/settings-OBbrbhij.js">
+    <link rel="modulepreload" crossorigin href="./assets/bundle.esm-i_UbZC0w.js">
+    <link rel="stylesheet" crossorigin href="./assets/cells-jmgGt1lS.css">
+    <link rel="stylesheet" crossorigin href="./assets/markdown-renderer-DdDKmWlR.css">
+    <link rel="stylesheet" crossorigin href="./assets/JsonOutput-B7vuddcd.css">
+    <link rel="stylesheet" crossorigin href="./assets/index-CeUwN_0i.css">
+  <marimo-wasm hidden=""></marimo-wasm>
+    <script>
+        if (window.location.protocol === 'file:') {
+            alert('Warning: This file must be served by an HTTP server to function correctly.');
+        }
+    </script>
+    
+    <style>
+        #save-button {
+            display: none !important;
+        }
+        #filename-input {
+            display: none !important;
+        }
+    </style>
+    <marimo-code hidden="">import%20marimo%0A%0A__generated_with%20%3D%20%220.19.9%22%0Aapp%20%3D%20marimo.App(width%3D%22medium%22)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_()%3A%0A%20%20%20%20import%20marimo%20as%20mo%0A%20%20%20%20from%20skimage.io%20import%20imread%0A%20%20%20%20from%20skimage.util%20import%20img_as_float%0A%20%20%20%20from%20skimage.transform%20import%20resize%0A%20%20%20%20from%20sklearn.cluster%20import%20KMeans%0A%20%20%20%20from%20skimage.feature%20import%20match_template%0A%20%20%20%20import%20numpy%20as%20np%0A%20%20%20%20import%20matplotlib.pyplot%20as%20plt%0A%20%20%20%20from%20scipy.ndimage%20import%20distance_transform_edt%0A%20%20%20%20from%20PIL%20import%20Image%0A%20%20%20%20import%20io%0A%20%20%20%20from%20urllib.request%20import%20urlopen%0A%0A%20%20%20%20return%20(%0A%20%20%20%20%20%20%20%20Image%2C%0A%20%20%20%20%20%20%20%20distance_transform_edt%2C%0A%20%20%20%20%20%20%20%20img_as_float%2C%0A%20%20%20%20%20%20%20%20imread%2C%0A%20%20%20%20%20%20%20%20io%2C%0A%20%20%20%20%20%20%20%20match_template%2C%0A%20%20%20%20%20%20%20%20mo%2C%0A%20%20%20%20%20%20%20%20np%2C%0A%20%20%20%20%20%20%20%20plt%2C%0A%20%20%20%20%20%20%20%20resize%2C%0A%20%20%20%20)%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20palette_file%20%3D%20mo.ui.file(%20label%3D%22Upload%20an%20image%20to%20process%22)%0A%20%20%20%20target_file%20%3D%20mo.notebook_location()%20%2F%20%22public%22%20%2F%20%22mylove_100x100.jpg%22%0A%20%20%20%20mask_target%20%3D%20mo.notebook_location()%20%2F%20%22public%22%20%2F%20%22mask_mylove_100x100.tiff%22%0A%20%20%20%20run_project%20%3D%20mo.ui.run_button(label%3D%22Place%20Yourself!%22)%0A%20%20%20%20mo.vstack(%0A%20%20%20%20%20%20%20%20%5B%0A%20%20%20%20%20%20%20%20%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20You're%201%20in%204%20Million%0A%20%20%20%20%20%20%20%20%20%20%20%20In%20reality%20you're%20way%20more%20special%20than%20that...%20But%20it%20makes%20sense%20for%20the%20project%2C%20so%20please%20bear%20with%20me.%0A%20%20%20%20%20%20%20%20%20%20%20%20Upload%20an%20image%20below!%20Afterwards%20when%20you're%20ready%2C%20press%20the%20*button*%20to%20begin!%20Enjoy%20my%20love!%20I%20hope%20it's%20fun!%0A%0A%20%20%20%20%20%20%20%20%22%22%22)%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20palette_file%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20run_project%2C%0A%20%20%20%20%20%20%20%20%5D%0A%20%20%20%20)%0A%20%20%20%20return%20mask_target%2C%20palette_file%2C%20run_project%2C%20target_file%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(fixed%2C%20mo%2C%20plt)%3A%0A%20%20%20%20plt.figure(figsize%3D(8%2C8))%0A%20%20%20%20plt.imshow(fixed)%0A%20%20%20%20plt.xticks(%5B%5D)%0A%20%20%20%20plt.yticks(%5B%5D)%0A%20%20%20%20hint1%20%3D%20mo.ui.run_button(label%3D%22Hint%201%20%3A)%22)%0A%20%20%20%20hint2%20%3D%20mo.ui.run_button(label%3D%22Hint%202%20%3A%7C%22)%0A%20%20%20%20hint3%20%3D%20mo.ui.run_button(label%3D%22Hint%203%20%3A(%22)%0A%20%20%20%20giveup%20%3D%20mo.ui.run_button(label%3D%22Get%20Solution...%20%3A((((((((%22)%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Nice%20You%20Got%20this%20far!%0A%20%20%20%20%20%20%20%20%20%20%20%20This%20should%20be%20the%20image%20you%20picked!%20%20Cool%20trick%20right%3F%20%20Lol%20just%20kidding%2C%20look%20closer%20at%20the%20picture.%0A%20%20%20%20%20%20%20%20%20%20%20%20There%20should%20be%20an%20interesting%20addition!%20%20(Really%20hoping%20it%20wasn't%20to%20obvious..).%20%20If%20you're%20still%20unsure%20whats%20going%20on%20check%20out%20the%20hints%20below!%20%0A%20%20%20%20%20%20%20%20%22%22%22)%2C%0A%20%20%20%20%20%20%20%20mo.hstack(%5Bplt.gca()%2C%0A%20%20%20%20%20%20%20%20mo.vstack(%5Bhint1%2Chint2%2Chint3%2Cgiveup%5D%2Calign%3D'start')%5D)%0A%20%20%20%20%5D)%0A%20%20%20%20return%20giveup%2C%20hint1%2C%20hint2%2C%20hint3%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(hint1%2C%20mo%2C%20moving%2C%20plt)%3A%0A%20%20%20%20mo.stop(not%20hint1.value)%0A%20%20%20%20plt.imshow(moving)%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Hint%201%0A%20%20%20%20%20%20%20%20%20%20%20%20Okokok%2C%20I%20hope%20it's%20not%20gonna%20be%20too%20tough%2C%20but%20suprise!%20You're%20trying%20to%20find%20*YOURSELF!*.%20Well%20a%20very%20small%20and%0A%20%20%20%20%20%20%20%20%20%20%20%20pixelated%20version%20of%20yourself.%20%20I%20realize%20it's%20quite%20pixelated%20and%20I'm%20sorry%20about%20that%20but%20I%20had%20to%20do%20some%20heavy%20resizing%20to%20make%20this%20run%20quickly.%20So%20here%20you%20are!%20%20A%20pixelated%20cutie%20%3C3%0A%20%20%20%20%20%20%20%20%22%22%22)%2C%0A%20%20%20%20%20%20%20%20plt.gca()%0A%0A%20%20%20%20%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(hint2%2C%20mo%2C%20plt%2C%20result)%3A%0A%20%20%20%20mo.stop(not%20hint2.value)%0A%20%20%20%20plt.imshow(result)%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Hint%202%0A%20%20%20%20%20%20%20%20%20%20%20%20Okokok%2C%20my%20bad%20this%20might%20be%20a%20tougher%20picture...%20But%201%20thing%20I%20did%20to%20make%20it%20harder%20was%20colour%20match%20your%20picture%20with%20the%20input%20image.%20%20The%20result%20will%20be%20below!%20%20(If%20the%20image%20has%20a%20lot%20of%20dark%20background%20things%20go%20sideways%20sorry!)%0A%20%20%20%20%20%20%20%20%22%22%22)%2C%0A%20%20%20%20%20%20%20%20plt.gca()%0A%0A%20%20%20%20%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(hint3%2C%20mo%2C%20plt%2C%20score)%3A%0A%20%20%20%20mo.stop(not%20hint3.value)%0A%20%20%20%20plt.imshow(score%2C%20cmap%3D%22gray%22)%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Hint%203%0A%20%20%20%20%20%20%20%20%20%20%20%20So%20this%20is%20obviously%20a%20hard%20picture!%20%20Well%20Shit!%20%20Hmmm%20the%20last%20piece%20of%20help%20I%20can%20give%20you%20is%20where%20to%20start%20looking.%20I've%20put%20that%20below%2C%20bright%20pixels%20mean%20a%20good%20place%20to%20look!%20%20To%20give%20you%20more%20insight%2C%20I%20search%20for%20the%20patch%20of%20the%20image%20you%20sent%20that's%20most%20correlated%20with%20the%20picture%20of%20you!%20Each%20pixel%20in%20this%20image%20is%20the%20correlation%20when%20the%20top%20left%20of%20the%20picture%20of%20you%20is%20there!%20Happy%20Hunting!%0A%20%20%20%20%20%20%20%20%22%22%22)%2C%0A%20%20%20%20%20%20%20%20plt.gca()%0A%0A%20%20%20%20%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(fixed%2C%20giveup%2C%20mo%2C%20palette%2C%20resize)%3A%0A%20%20%20%20mo.stop(not%20giveup.value)%0A%20%20%20%20mo.vstack(%5B%0A%20%20%20%20%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%20%20%20%20%20%20%20%20%23%20Solution%0A%20%20%20%20%20%20%20%20%20%20%20%20Damn!%20%20I'm%20sorry%20it's%20so%20tough%2C%20let's%20see%20if%20we%20can%20at%20least%20lyk%20where%20it%20is!%20%20Below%20will%20be%20a%20comparison%20image.%20%20You'll%20see%20a%20slider%20in%20the%20middle%20you%20can%20move%20left%20to%20right.%20%20All%20of%20the%20image%20to%20the%20left%20of%20the%20slider%20will%20be%20the%20original%20and%20all%20the%20image%20to%20the%20right%20of%20the%20slider%20will%20be%20from%20the%20image%20with%20you%20added!%20%20Hope%20you%20can%20find%20the%20solution!%0A%20%20%20%20%20%20%20%20%22%22%22)%2C%0A%20%20%20%20%20%20%20%20mo.image_compare(resize(palette%2Cfixed.shape)%2Cfixed)%0A%20%20%20%20%5D)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(mo)%3A%0A%20%20%20%20mo.md(f%22%22%22%0A%20%20%20%20%23%23%20Whoaaaaa%20Why%20you%20looking%20down%20here%3F%3F%0A%20%20%20%20only%20boring%20code%20below%20here!%0A%20%20%20%20...%20Also%20the%20answer%20to%20the%201%20in%204%20million%20thing%20...%0A%20%20%20%20%22%22%22)%0A%20%20%20%20return%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(%0A%20%20%20%20Image%2C%0A%20%20%20%20img_as_float%2C%0A%20%20%20%20imread%2C%0A%20%20%20%20io%2C%0A%20%20%20%20mask_target%2C%0A%20%20%20%20mo%2C%0A%20%20%20%20np%2C%0A%20%20%20%20palette_file%2C%0A%20%20%20%20target_file%2C%0A)%3A%0A%20%20%20%20mo.stop(len(palette_file.value)%20%3D%3D%200)%0A%20%20%20%20bytes_array%20%3D%20palette_file.value%5B0%5D.contents%0A%20%20%20%20im%20%3D%20Image.open(io.BytesIO(bytes_array))%0A%20%20%20%20palette%20%3D%20img_as_float(np.array(im))%0A%0A%20%20%20%20image_bytes%20%3D%20target_file.read_bytes()%0A%20%20%20%20mask_bytes%20%3D%20mask_target.read_bytes()%0A%0A%20%20%20%20template%20%3D%20img_as_float(imread(io.BytesIO(image_bytes)))%0A%20%20%20%20mask%20%3D%20img_as_float(imread(io.BytesIO(mask_bytes)))%5B%3A%2C%3A%2C%3A3%5D%20%3E%200.5%0A%20%20%20%20return%20mask%2C%20palette%2C%20template%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(%0A%20%20%20%20distance_transform_edt%2C%0A%20%20%20%20mask%2C%0A%20%20%20%20match_template%2C%0A%20%20%20%20mo%2C%0A%20%20%20%20np%2C%0A%20%20%20%20palette%2C%0A%20%20%20%20palette_file%2C%0A%20%20%20%20pixel_sorting%2C%0A%20%20%20%20resize%2C%0A%20%20%20%20run_project%2C%0A%20%20%20%20template%2C%0A)%3A%0A%20%20%20%20mo.stop(len(palette_file.value)%20%3D%3D%200%20or%20not%20run_project.value)%0A%20%20%20%20fixed%20%3D%20resize(palette%2C%20(2048%2C2048)%2C%20anti_aliasing%3DTrue)%0A%20%20%20%20moving%20%3D%20resize(template%2C%20(75%2C75)%2C%20anti_aliasing%3DTrue)%0A%20%20%20%20%23%201%20in%204%20million%20since%202048*2048%20%3D%204%20194%20304%2C%20should%20I%20divide%20by%2075%5E2%3F%20yes%20but%20also%201%20in%20700%20sounds%20way%20less%20cool!%0A%0A%20%20%20%20%23%20Find%20Patch%20top-left%20with%20Highest%20Correlation%0A%20%20%20%20score%20%3D%20match_template(fixed.copy()%2C%20moving.copy())%0A%20%20%20%20tl%20%3D%20np.unravel_index(np.argmax(score)%2C%20score.shape)%0A%0A%20%20%20%20%23%20Extract%20patch%20and%20palette%20transfer%20to%20target%0A%20%20%20%20roi%20%3D%20fixed%5Btl%5B0%5D%3Atl%5B0%5D%20%2B%20moving.shape%5B0%5D%2Ctl%5B1%5D%3Atl%5B1%5D%2Bmoving.shape%5B1%5D%2C%3A%5D%0A%20%20%20%20result%2C_%20%3D%20pixel_sorting(roi%2C%20moving)%0A%0A%20%20%20%20%23%20Blending%20Alpha%20Matrix%20--%3E%20using%20mask%0A%20%20%20%20resize_mask%20%3D%20resize(mask%5B%3A%2C%3A%2C0%5D%2C%20moving.shape%5B%3A2%5D)%20%3D%3D%200%0A%20%20%20%20dist%20%3D%20np.sqrt(distance_transform_edt(resize_mask))%0A%20%20%20%20blend_mask%20%3D%20np.stack(%5Bdist%2Cdist%2Cdist%5D%2Caxis%20%3D%202)%20%2F%20dist.max()%0A%0A%20%20%20%20fixed%5Btl%5B0%5D%3Atl%5B0%5D%20%2B%20moving.shape%5B0%5D%2Ctl%5B1%5D%3Atl%5B1%5D%2Bmoving.shape%5B1%5D%2C%3A%5D%20%3D%20(blend_mask)*roi%20%2B%20(1%20-%20blend_mask)%20*%20result%0A%20%20%20%20return%20fixed%2C%20moving%2C%20result%2C%20score%0A%0A%0A%40app.cell(hide_code%3DTrue)%0Adef%20_(gray2rgb%2C%20np%2C%20resize)%3A%0A%20%20%20%20from%20scipy.optimize%20import%20linear_sum_assignment%0A%20%20%20%20from%20scipy.spatial.distance%20import%20cdist%0A%20%20%20%20from%20skimage.filters%20import%20sobel%0A%20%20%20%20from%20typing%20import%20Callable%0A%0A%0A%20%20%20%20def%20flatten(img%3A%20np.ndarray)%3A%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20Wrapper%20around%20array%20flatten%20so%20I%20can%0A%20%20%20%20%20%20%20%20overload%20it%0A%0A%20%20%20%20%20%20%20%20%3Aparam%20img%3A%20Description%0A%20%20%20%20%20%20%20%20%3Atype%20img%3A%20np.ndarray%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20return%20img.flatten()%0A%0A%0A%20%20%20%20def%20edge_magnitude(img)%3A%0A%20%20%20%20%20%20%20%20if%20img.ndim%20%3D%3D%203%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20flatten(np.sum(np.abs(sobel(img))%2C%20axis%3D2))%0A%20%20%20%20%20%20%20%20return%20flatten(np.abs(sobel(img)))%0A%0A%0A%20%20%20%20def%20luminance(img%3A%20np.ndarray)%3A%0A%20%20%20%20%20%20%20%20if%20img.ndim%20%3D%3D%202%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20img%0A%20%20%20%20%20%20%20%20return%20np.dot(img%5B...%2C%20%3A3%5D%2C%20%5B0.299%2C%200.587%2C%200.114%5D)%0A%0A%0A%20%20%20%20def%20pixel_sorting(%0A%20%20%20%20%20%20%20%20img%3A%20np.ndarray%2C%0A%20%20%20%20%20%20%20%20target%3A%20np.ndarray%2C%0A%20%20%20%20%20%20%20%20score_func%3A%20Callable%20%3D%20flatten%2C%0A%20%20%20%20%20%20%20%20colour_func%3A%20Callable%20%3D%20luminance%2C%0A%20%20%20%20)%20-%3E%20tuple%5Bnp.ndarray%2C%20tuple%5Bnp.ndarray%5D%5D%3A%0A%20%20%20%20%20%20%20%20%22%22%22%0A%20%20%20%20%20%20%20%20Docstring%20for%20pixel_sorting%0A%20%20%20%20%20%20%20%20This%20function%20calculated%20the%20way%20to%20make%201%20image%20look%20like%20another%20using%0A%20%20%20%20%20%20%20%20pallette%20sorting%0A%0A%20%20%20%20%20%20%20%20%3Aparam%20img%3A%20Description%0A%20%20%20%20%20%20%20%20%3Atype%20img%3A%20np.ndarray%0A%20%20%20%20%20%20%20%20%3Aparam%20target%3A%20Description%0A%20%20%20%20%20%20%20%20%3Atype%20target%3A%20np.ndarray%0A%20%20%20%20%20%20%20%20%22%22%22%0A%0A%20%20%20%20%20%20%20%20if%20target.ndim%20%3D%3D%203%20and%20img.ndim%20%3D%3D%202%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20img%20%3D%20gray2rgb(img)%0A%0A%20%20%20%20%20%20%20%20input_img%20%3D%20np.array(resize(img%2C%20target.shape%2C%20anti_aliasing%3DTrue))%0A%0A%20%20%20%20%20%20%20%20%23%20Handle%20Colour%0A%20%20%20%20%20%20%20%20if%20input_img.ndim%20%3E%202%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20palette%20%3D%20colour_func(input_img)%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20palette%20%3D%20input_img%0A%0A%20%20%20%20%20%20%20%20if%20target.ndim%20%3E%202%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20template%20%3D%20colour_func(target)%0A%20%20%20%20%20%20%20%20else%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20template%20%3D%20target%0A%0A%20%20%20%20%20%20%20%20input_vec%20%3D%20palette.flatten()%0A%0A%20%20%20%20%20%20%20%20%23%20Compute%20features%20to%20sort%20on%0A%20%20%20%20%20%20%20%20input_scores%20%3D%20score_func(palette)%0A%20%20%20%20%20%20%20%20target_scores%20%3D%20score_func(template)%0A%0A%20%20%20%20%20%20%20%20input_idx%20%3D%20np.argsort(input_scores)%0A%20%20%20%20%20%20%20%20target_idx%20%3D%20np.argsort(target_scores)%0A%0A%20%20%20%20%20%20%20%20%23%20reshape%20result%0A%20%20%20%20%20%20%20%20if%20input_img.ndim%20%3C%3D%202%3A%0A%20%20%20%20%20%20%20%20%20%20%20%20result%20%3D%20np.zeros_like(input_vec)%0A%20%20%20%20%20%20%20%20%20%20%20%20result%5Btarget_idx%5D%20%3D%20input_vec%5Binput_idx%5D%0A%20%20%20%20%20%20%20%20%20%20%20%20return%20result.reshape(input_img.shape)%2C%20input_idx%2C%20target_idx%0A%20%20%20%20%20%20%20%20input_y%2C%20input_x%20%3D%20np.unravel_index(input_idx%2C%20palette.shape)%0A%20%20%20%20%20%20%20%20target_y%2C%20target_x%20%3D%20np.unravel_index(target_idx%2C%20template.shape)%0A%20%20%20%20%20%20%20%20result%20%3D%20np.zeros_like(target)%0A%20%20%20%20%20%20%20%20result%5Btarget_y%2C%20target_x%2C%20%3A%5D%20%3D%20input_img%5Binput_y%2C%20input_x%2C%20%3A%5D%0A%20%20%20%20%20%20%20%20return%20(%0A%20%20%20%20%20%20%20%20%20%20%20%20result%2C%0A%20%20%20%20%20%20%20%20%20%20%20%20(input_y%2C%20input_x%2C%20target_y%2C%20target_x)%2C%0A%20%20%20%20%20%20%20%20)%0A%0A%20%20%20%20return%20(pixel_sorting%2C)%0A%0A%0Aif%20__name__%20%3D%3D%20%22__main__%22%3A%0A%20%20%20%20app.run()%0A</marimo-code></head>
+  <body>
+    <div id="root"></div>
+    <!-- This is a portal for the data editor to render in -->
+    <div id="portal" data-testid="glide-portal" style="position: fixed; left: 0; top: 0; z-index: 9999"></div>
+    <script data-marimo="true">
+      window.__MARIMO_MOUNT_CONFIG__ = {
+            "filename": "notebook.py",
+            "mode": "read",
+            "version": "0.19.9",
+            "serverToken": "unused",
+            "config": {"ai": {"custom_providers": {}, "models": {"custom_models": [], "displayed_models": []}}, "completion": {"activate_on_typing": true, "copilot": false, "signature_hint_on_typing": false}, "diagnostics": {"sql_linter": true}, "display": {"cell_output": "below", "code_editor_font_size": 14, "dataframes": "rich", "default_table_max_columns": 50, "default_table_page_size": 10, "default_width": "medium", "reference_highlighting": false, "theme": "light"}, "formatting": {"line_length": 79}, "keymap": {"overrides": {}, "preset": "default"}, "language_servers": {"pylsp": {"enable_flake8": false, "enable_mypy": true, "enable_pydocstyle": false, "enable_pyflakes": false, "enable_pylint": false, "enable_ruff": true, "enabled": false}}, "mcp": {"mcpServers": {}, "presets": []}, "package_management": {"manager": "pip"}, "runtime": {"auto_instantiate": false, "auto_reload": "off", "default_csv_encoding": "utf-8", "default_sql_output": "auto", "on_cell_change": "autorun", "output_max_bytes": 8000000, "reactive_tests": true, "std_stream_max_bytes": 1000000, "watcher_on_save": "lazy"}, "save": {"autosave": "off", "autosave_delay": 1000, "format_on_save": false}, "server": {"browser": "default", "follow_symlink": false}, "snippets": {"custom_paths": [], "include_default_snippets": true}},
+            "configOverrides": {},
+            "appConfig": {"sql_output": "auto", "width": "medium"},
+            "view": {"showAppCode": false},
+            "notebook": null,
+            "session": null,
+            "runtimeConfig": null,
+        };
+    </script>
+  </body>
+</html>
